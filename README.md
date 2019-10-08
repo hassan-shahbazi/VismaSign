@@ -7,6 +7,7 @@ A pure swift interview code. Written in **Fedora 30.0**, usable on *Linux* and *
 ## Requirements
 
 - Swift >= 4.0
+- OpenSSL (*libssl-dev* package should be available on Linux)
 
 ## Installation
 
