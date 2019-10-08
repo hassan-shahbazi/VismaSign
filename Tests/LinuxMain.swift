@@ -1,5 +1,4 @@
 import XCTest
-
 import VismaSignTests
 
 var tests = [XCTestCaseEntry]()

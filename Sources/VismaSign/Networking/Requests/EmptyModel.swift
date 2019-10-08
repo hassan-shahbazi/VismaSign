@@ -1,0 +1,1 @@
+struct EmptyModel: Codable {}
