@@ -11,14 +11,14 @@ A pure swift interview code. Written in **Fedora 30.0**, usable on *Linux* and *
 
 ## Installation
 
-To build the project:
+### Building
 
 ```
 cd path/to/project
 swift build
 ```
 
-To get the results:
+### Running
 
 ```
 .build/debug/VismaSign
@@ -28,7 +28,7 @@ or you can run by:
 swift run
 ```
 
-To run tests:
+### Testing
 
 ```
 swift test
