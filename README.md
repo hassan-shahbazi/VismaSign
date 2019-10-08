@@ -23,6 +23,10 @@ To get the results:
 ```
 .build/debug/VismaSign
 ```
+or you can run by:
+```
+swift run
+```
 
 To run tests:
 
