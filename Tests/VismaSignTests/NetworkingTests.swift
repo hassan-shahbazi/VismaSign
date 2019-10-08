@@ -24,7 +24,9 @@ class NetworkingTests: XCTestCase {
         waitForExpectations(timeout: 1.0, handler: nil)
     }
 
+    #if os(Linux)
     static var allTests = [
         ("testApiFailure", testApiFailure),
     ]
+    #endif
 }
