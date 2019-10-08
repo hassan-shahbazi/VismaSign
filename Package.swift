@@ -7,7 +7,7 @@ let package = Package(
     name: "VismaSign",
     products: [
         .executable(name: "VismaSign", targets: ["VismaSign"]),
-        .library(name: "VismaSignLibrary", targets: ["VismaSignLibrary"]),
+        .library(name: "VismaSignClient", targets: ["VismaSignClient"]),
     ],
     dependencies: [
         .package(url: "https://github.com/IBM-Swift/BlueCryptor.git", from: "1.0.0"),
@@ -15,12 +15,12 @@ let package = Package(
     targets: [
         .target(
             name: "VismaSign",
-            dependencies: ["VismaSignLibrary"]),
+            dependencies: ["VismaSignClient"]),
         .target(
-            name: "VismaSignLibrary",
+            name: "VismaSignClient",
             dependencies: ["Cryptor"]),
         .testTarget(
-            name: "VismaSignLibraryTests",
-            dependencies: ["VismaSignLibrary"]),
+            name: "VismaSignClientTests",
+            dependencies: ["VismaSignClient"]),
     ]
 )

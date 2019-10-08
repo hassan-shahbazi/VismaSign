@@ -1,5 +1,5 @@
 import Foundation
-import VismaSignLibrary
+import VismaSignClient
 
 // MARK: - Project
 

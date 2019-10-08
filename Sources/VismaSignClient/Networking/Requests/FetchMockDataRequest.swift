@@ -1,6 +1,5 @@
 import Foundation
 
-
 public struct FetchMockDataRequest: APIServiceRequest {
 
     public typealias BodyType = EmptyModel

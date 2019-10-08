@@ -1,5 +1,5 @@
 import XCTest
-@testable import VismaSignLibrary
+@testable import VismaSignClient
 
 class NetworkingTests: XCTestCase {
 
