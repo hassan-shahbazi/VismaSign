@@ -1,14 +1,14 @@
 import Foundation
 
-enum Result<Value> {
+public enum Result<Value> {
     case success(Value)
     case failure(Error)
 }
 
-enum APIError: LocalizedError {
+public enum APIError: LocalizedError {
     case detailed
 
-    var errorDescription: String? {
+    public var errorDescription: String? {
         switch self {
             case .detailed: return "error has been occured"
         }

@@ -1,15 +1,9 @@
 import XCTest
-@testable import VismaSign
+@testable import VismaSignLibrary
 
 class NetworkingTests: XCTestCase {
 
-    private var apiService: APIServiceManager!
-
-    override func setUp() {
-        super.setUp()
-
-        apiService = APIServiceManagerImpl()
-    }
+    private var apiService: APIServiceManager! = APIServiceManagerImpl()
 
     func testApiFailure() {
         let exp = expectation(description: "the test is failed")

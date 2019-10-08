@@ -5,19 +5,22 @@ import PackageDescription
 
 let package = Package(
     name: "VismaSign",
+    products: [
+        .executable(name: "VismaSign", targets: ["VismaSign"]),
+        .library(name: "VismaSignLibrary", targets: ["VismaSignLibrary"]),
+    ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
         .package(url: "https://github.com/IBM-Swift/BlueCryptor.git", from: "1.0.0"),
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "VismaSign",
+            dependencies: ["VismaSignLibrary"]),
+        .target(
+            name: "VismaSignLibrary",
             dependencies: ["Cryptor"]),
         .testTarget(
-            name: "VismaSignTests",
-            dependencies: ["VismaSign"]),
+            name: "VismaSignLibraryTests",
+            dependencies: ["VismaSignLibrary"]),
     ]
 )

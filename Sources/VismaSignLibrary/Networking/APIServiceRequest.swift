@@ -1,9 +1,9 @@
 
-enum HTTPMethod: String {
+public enum HTTPMethod: String {
     case get, post, delete, put
 }
 
-protocol APIServiceRequest {
+public protocol APIServiceRequest {
 
     associatedtype ReturnType: Decodable
     associatedtype BodyType: Encodable

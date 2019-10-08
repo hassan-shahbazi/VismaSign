@@ -1,5 +1,5 @@
 import XCTest
-import VismaSignTests
+import VismaSignLibraryTests
 
 var tests = [XCTestCaseEntry]()
 tests += VismaSignTests.allTests()
