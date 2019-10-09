@@ -1,6 +1,8 @@
 import Foundation
 
-protocol VismaSignClient { }
+protocol VismaSignClient { 
+    func performRequests<T: APIServiceRequest>(_ request: T, completion: @escaping (Result<T.ReturnType>) -> Void) throws
+}
 
 protocol VismaSignClientOrganization: VismaSignClient {
 
@@ -10,4 +12,6 @@ protocol VismaSignClientOrganization: VismaSignClient {
 protocol VismaSignClientPartner: VismaSignClient {
     
     func performPartnerRequests<T: APIServicePartnerRequest>(_ request: T, completion: @escaping (Result<T.ReturnType>) -> Void) throws
+
+    func fetchAccessToken(clientID: String, clientSecret: String, completion: @escaping (Result<AccessTokenModel>) -> Void) throws
 }

@@ -14,7 +14,7 @@ open class VismaSignClientImpl: VismaSignClient {
 
     private let session = URLSession.shared
 
-    private func perform<T: APIServiceRequest>(_ request: T, _ completion: @escaping (Result<T.ReturnType>) -> Void) throws {
+    func performRequests<T: APIServiceRequest>(_ request: T, completion: @escaping (Result<T.ReturnType>) -> Void) throws {
         let urlRequest = try self.urlRequest(request)
         let task = session.dataTask(with: urlRequest) { [unowned self] responseData, response, responseError in
             if case let .failure(error) = self.validateResponseData(responseData, response: response, responseError: responseError) {
@@ -71,13 +71,18 @@ open class VismaSignClientImpl: VismaSignClient {
 
 extension VismaSignClientImpl: VismaSignClientOrganization {
     public func performOrganizationRequests<T: APIServiceOrganizationRequest>(_ request: T, completion: @escaping (Result<T.ReturnType>) -> Void) throws {
-        try self.perform(request, completion)
+        try self.performRequests(request, completion: completion)
     }
 }
 
 extension VismaSignClientImpl: VismaSignClientPartner {
     public func performPartnerRequests<T: APIServicePartnerRequest>(_ request: T, completion: @escaping (Result<T.ReturnType>) -> Void) throws {
-        try self.perform(request, completion)
+        try self.performRequests(request, completion: completion)
+    }
+
+    public func fetchAccessToken(clientID: String, clientSecret: String, completion: @escaping (Result<AccessTokenModel>) -> Void) throws {
+        let request = AccessTokenRequest(clientID: clientID, clientSecret: clientSecret)
+        try self.performRequests(request, completion: completion)
     }
 }
 

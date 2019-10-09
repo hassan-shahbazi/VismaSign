@@ -33,7 +33,7 @@ The library introduces the following protocols for making API requests:
 
 #### APIServiceOrganizationRequest example
 
-You can easily create organizational request by confirming to the protocol. The headers will be applied automatically
+You can easily create organizational request by conforming to the protocol. The headers will be applied automatically
 
 ```swift
 struct OrganizationRequest: APIServiceOrganizationRequest {
@@ -63,7 +63,7 @@ struct OrganizationRequest: APIServiceOrganizationRequest {
 
 #### APIServicePartnerRequest example
 
-You can easily create partner request by confirming to the protocol. To initiate a new *PartnerRequest* you need to inject *AccessTokenModel* containing required information for Oath authentication.
+You can easily create partner request by conforming to the protocol. To initiate a new *PartnerRequest* you need to inject *AccessTokenModel* containing required information for Oath authentication.
 
 ```swift
 struct PartnerRequest: APIServicePartnerRequest {
