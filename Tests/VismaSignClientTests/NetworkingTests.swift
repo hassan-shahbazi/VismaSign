@@ -12,8 +12,12 @@ final class NetworkingTests: XCTestCase {
     }
 
     func testOrganizationHeaderCalculator() {
+        let formatter = Date.RFC2822DateFormatter
+        // for test purposes
+        formatter.timeZone = TimeZone(identifier: "GMT")
+
         let request = MockOrganizationRequest(clientID: "ddf58116-6082-4bfc-a775-0c0bb2f945ce", secret: "jp7SjOOr4czRTifCo30qx0sZAIw9PW+vVpsbP09pQaY=")
-        let headers = APIRequestHeaderImpl(.organization(request, request.secret, request.clientID, Date.RFC2822DateFormatter.date(from: "Tue, 16 May 2017 10:18:18 +0300")!)).headers
+        let headers = APIRequestHeaderImpl(.organization(request, request.secret, request.clientID, formatter.date(from: "Tue, 16 May 2017 10:18:18 +0300")!)).headers
 
         XCTAssertEqual(headers![HeaderType.authorization.rawValue], "Onnistuu ddf58116-6082-4bfc-a775-0c0bb2f945ce:7s+Vee4VG0pObH/GkFpi4DAP1naaaPrPVzOytzbKRe9TBxB+LNzv03jySVFXeFyNJRUY8HRtdlY4e10QpAIFhg==")
     }

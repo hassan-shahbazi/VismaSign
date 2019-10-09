@@ -29,7 +29,6 @@ open class VismaSignClientImpl: VismaSignClient {
     }
 
     private func urlRequest<T: APIServiceRequest>(_ request: T, cache: URLRequest.CachePolicy = .useProtocolCachePolicy) throws -> URLRequest {
-        print("HOSTTTT: \(request.host!)")
         guard let url = URL(string: "\(request.host!)\(request.path)") else {
             throw VismaSignClientError.badURL
         }

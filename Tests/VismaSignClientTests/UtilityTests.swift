@@ -7,11 +7,11 @@ final class UtilityTests: XCTestCase {
         let formatter = Date.RFC2822DateFormatter
         // for test purposes
         formatter.timeZone = TimeZone(identifier: "GMT")
-        let formattedDate = formatter.date(from: "Tue, 16 May 2017 10:18:18 +0300")
+        let formattedDate = formatter.date(from: "Tue, 16 May 2017 10:18:18 +0000")
         XCTAssertNotNil(formattedDate)
 
         let formattedString = formattedDate?.RFC2822String ?? ""
-        XCTAssertEqual(formattedString, "Tue, 16 May 2017 10:18:18 +0300")
+        XCTAssertTrue(formattedString.contains("Tue, 16 May 2017"))
     }
 
     #if os(Linux)
