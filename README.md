@@ -41,7 +41,7 @@ struct OrganizationRequest: APIServiceOrganizationRequest {
     typealias BodyType = RequestBody
     typealias ReturnType = EmptyModel
 
-    var host: String! = "your_host_here" //optional
+    var host: String! = "your_host_here" // can be set on *APIServiceRequest* extension for global usages
     var path: String = "API_path_here"
     var httpMethod: HTTPMethod = .post
     var bodyData: BodyType?
@@ -70,7 +70,7 @@ struct PartnerRequest: APIServicePartnerRequest {
     typealias BodyType = EmptyModel
     typealias ReturnType = String
 
-    var host: String! = "your_host_here" //optional
+    var host: String! = "your_host_here" // can be set on *APIServiceRequest* extension for global usages
     var path: String = "API_path_here"
     var httpMethod: HTTPMethod = .post
     var bodyData: BodyType?
