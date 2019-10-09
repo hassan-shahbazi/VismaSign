@@ -2,14 +2,9 @@
 
 ![Build_Status](https://travis-ci.org/Hassaniiii/VismaSign.svg?branch=master)
 
-A pure swift interview code. Written in **Fedora 30.0**, usable on *Linux* and *macOS*
-
 ## Description
 
-The library is intended to implement an interface for the API documented [here](https://sign.visma.net/api/docs/v1/) and [here](https://sign.visma.net/api/docs/v1/partners/)
-
-The library is written in *Swift 4.2* on *Fedora* and is useable in both **Linux** and **macOS**.
-
+The library is intended to implement an interface for the API documented [here](https://sign.visma.net/api/docs/v1/) and [here](https://sign.visma.net/api/docs/v1/partners/) It is written in *Swift 4.2* on *Fedora* and is useable in both **Linux** and **macOS**.
 
 ## Requirements
 
