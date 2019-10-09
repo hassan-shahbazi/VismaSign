@@ -1,6 +1,6 @@
 import Foundation
 
-struct ObtainAccessTokenModel: Codable {
+public struct AccessTokenModel: Codable {
     let accessToken: String
     let expiresIn: Int
     let tokenType, scope: String

@@ -6,11 +6,31 @@ public enum Result<Value> {
 }
 
 public enum APIError: LocalizedError {
-    case detailed
+    case noData
+    case detailed(Int, String?)
+
+    public enum Reason: Int {
+        case unauthorized = 401
+        case limitSurpassed = 406
+        case dataNotUnique = 422
+        case invalidCode = 500
+    }
+
+    public var reason: Reason? {
+        switch self {
+        case let .detailed(statusCode, _):
+            return Reason(rawValue: statusCode)
+        default:
+            return nil
+        }
+    }
 
     public var errorDescription: String? {
         switch self {
-            case .detailed: return "error has been occured"
+        case let .detailed(_, backendDescription):
+            return backendDescription
+        default:
+            return nil
         }
     }
 }

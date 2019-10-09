@@ -12,13 +12,13 @@ public struct APIRequestHeaderImpl<T: APIServiceRequest>: APIRequestHeader {
 
     init(_ headerSet: HeaderSet<ServiceRequest>) {
         switch headerSet {
-            case .noHeader:
+            case .noHeader(_):
                 self.headers = commonHeaders(Date())
             case .organization(let request, let secret, let clientID, let date):
                 self.headers = commonHeaders(date)
                 self.updateOrganizationHeaders(request, secret, clientID)
 
-            case .partner(let tokenType, let token, let date):
+            case .partner(_, let tokenType, let token, let date):
                 self.headers = commonHeaders(date)
                 self.updatePartnerHeaders(tokenType, token)
         }
@@ -61,16 +61,16 @@ public struct APIRequestHeaderImpl<T: APIServiceRequest>: APIRequestHeader {
 }
 
 enum HeaderSet<T> {
-    case noHeader
+    case noHeader(T)
 
     case organization(T, String, String, Date)
     static func organization(_ request: T, _ clientID: String, _ secret: String) -> HeaderSet {
         return .organization(request, clientID, secret, Date())
     }
 
-    case partner(String, String, Date)
-    static func partner(_ tokenType: String, _ token: String) -> HeaderSet {
-        return .partner(tokenType, token, Date())
+    case partner(T, String, String, Date)
+    static func partner(_ request: T, _ tokenType: String, _ token: String) -> HeaderSet {
+        return .partner(request, tokenType, token, Date())
     }
 }
 

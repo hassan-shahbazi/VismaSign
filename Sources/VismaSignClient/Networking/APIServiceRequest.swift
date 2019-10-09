@@ -8,6 +8,7 @@ public protocol APIServiceRequest {
     associatedtype ReturnType: Decodable
     associatedtype BodyType: Encodable
 
+    var host: String! { get }
     var path: String { get }
     var httpMethod: HTTPMethod { get }
     var headers: [String:String]? { get }
@@ -17,13 +18,29 @@ public protocol APIServiceRequest {
 }
 
 public extension APIServiceRequest {
+    var host: String! {
+        return "http://vismasign.com"
+    }
+
     var body: Data? {    
         return bodyData.data
     }
 }
 
-extension Encodable {
-    var data: Data? {
-        return try? JSONEncoder().encode(self)
+extension APIServiceGeneralRequest {
+    var headers: [String:String]? {
+        return APIRequestHeaderImpl(.noHeader(self)).headers
+    } 
+}
+
+extension APIServiceOrganizationRequest {
+    var headers: [String:String]? {
+        return APIRequestHeaderImpl(.organization(self, self.secret, self.clientID)).headers
+    }
+}
+
+extension APIServicePartnerRequest {
+    var headers: [String:String]? {
+        return APIRequestHeaderImpl(.partner(self, self.accessTokenModel.tokenType, self.accessTokenModel.accessToken)).headers
     }
 }
