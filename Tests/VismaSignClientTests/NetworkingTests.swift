@@ -3,6 +3,8 @@ import XCTest
 
 final class NetworkingTests: XCTestCase {
 
+    private let machineTimeZone: String = "GMT"
+
     func testOrganizationalHeaders() {
         let request = MockOrganizationRequest(clientID: "ddf58116-6082-4bfc-a775-0c0bb2f945ce", secret: "jp7SjOOr4czRTifCo30qx0sZAIw9PW+vVpsbP09pQaY=")
         XCTAssertNotNil(request.headers)
@@ -14,12 +16,12 @@ final class NetworkingTests: XCTestCase {
     func testOrganizationHeaderCalculator() {
         let formatter = Date.RFC2822DateFormatter
         // for test purposes
-        formatter.timeZone = TimeZone(identifier: "EEST")
+        formatter.timeZone = TimeZone(identifier: machineTimeZone)
 
         let request = MockOrganizationRequest(clientID: "ddf58116-6082-4bfc-a775-0c0bb2f945ce", secret: "jp7SjOOr4czRTifCo30qx0sZAIw9PW+vVpsbP09pQaY=")
         let headers = APIRequestHeaderImpl(.organization(request, request.secret, request.clientID, formatter.date(from: "Tue, 16 May 2017 10:18:18 +0300")!)).headers
 
-        XCTAssertEqual(headers![HeaderType.authorization.rawValue], "Onnistuu ddf58116-6082-4bfc-a775-0c0bb2f945ce:7s+Vee4VG0pObH/GkFpi4DAP1naaaPrPVzOytzbKRe9TBxB+LNzv03jySVFXeFyNJRUY8HRtdlY4e10QpAIFhg==")
+        XCTAssertEqual(headers![HeaderType.authorization.rawValue], "Onnistuu ddf58116-6082-4bfc-a775-0c0bb2f945ce:bHEx6DsNyOcXFKe+CZh9YT2tf9w7xMDxMrxo8zyjEVCGSLuspWr/Y9fVMfUt4BoX0PJmwGwVreAkFq/gLN08bg==")
     }
 
     func testPartnerHeaders() {
@@ -47,6 +49,8 @@ final class NetworkingTests: XCTestCase {
     #if os(Linux)
     static var allTests = [
         ("testOrganizationalHeaders", testOrganizationalHeaders),
+        ("testOrganizationHeaderCalculator", testOrganizationHeaderCalculator),
+        ("testVismaSignClientImpl", testVismaSignClientImpl),
         ("testPartnerHeaders", testPartnerHeaders),
     ]
     #endif
@@ -62,12 +66,12 @@ private struct MockOrganizationRequest: APIServiceOrganizationRequest {
     var bodyData: BodyType?
     var secret: String!
     var clientID: String!
-    
+
     init(clientID: String, secret: String) {
         self.clientID = clientID
         self.secret = secret
 
-        
+
         path = "/api/v1/document/"
         bodyData = MockBodyData(document: MockInternalBody(name: "Test"))
     }

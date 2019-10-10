@@ -1,5 +1,7 @@
 language: swift
-osx_image: xcode11
+os:
+  - linux
+  - osx
 
 script:
   - swift build
