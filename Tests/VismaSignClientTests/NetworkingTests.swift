@@ -17,9 +17,9 @@ final class NetworkingTests: XCTestCase {
         formatter.timeZone = TimeZone(identifier: "EEST")
 
         let request = MockOrganizationRequest(clientID: "ddf58116-6082-4bfc-a775-0c0bb2f945ce", secret: "jp7SjOOr4czRTifCo30qx0sZAIw9PW+vVpsbP09pQaY=")
-        let headers = APIRequestHeaderImpl(.organization(request, request.secret, request.clientID, formatter.date(from: "Tue, 16 May 2017 10:18:18 +0300")!)).headers
+        let headers = APIRequestHeaderImpl(.organization(request, request.secret, request.clientID, formatter.date(from: "Tue, 16 May 2017 10:18:18 +0000")!)).headers
 
-        XCTAssertEqual(headers![HeaderType.authorization.rawValue], "Onnistuu ddf58116-6082-4bfc-a775-0c0bb2f945ce:7s+Vee4VG0pObH/GkFpi4DAP1naaaPrPVzOytzbKRe9TBxB+LNzv03jySVFXeFyNJRUY8HRtdlY4e10QpAIFhg==")
+        XCTAssertEqual(headers![HeaderType.authorization.rawValue], "Onnistuu ddf58116-6082-4bfc-a775-0c0bb2f945ce:erd5F6w7+uLI4QTci9w5MSZqIxXHlOtyFq4Wj5xd9foKSMZVb2v6GAxErV5ZdOMdW5cRghEX3ZmtmShtdHltyg==")
     }
 
     func testPartnerHeaders() {
