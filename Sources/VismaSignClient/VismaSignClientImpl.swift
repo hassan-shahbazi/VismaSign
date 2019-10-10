@@ -1,5 +1,8 @@
 import Foundation
+
+#if os(Linux)
 import FoundationNetworking
+#endif
 
 open class VismaSignClientImpl: VismaSignClient {
 
