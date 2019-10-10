@@ -47,6 +47,8 @@ final class NetworkingTests: XCTestCase {
     #if os(Linux)
     static var allTests = [
         ("testOrganizationalHeaders", testOrganizationalHeaders),
+        ("testOrganizationHeaderCalculator", testOrganizationHeaderCalculator),
+        ("testVismaSignClientImpl", testVismaSignClientImpl),
         ("testPartnerHeaders", testPartnerHeaders),
     ]
     #endif
@@ -62,12 +64,12 @@ private struct MockOrganizationRequest: APIServiceOrganizationRequest {
     var bodyData: BodyType?
     var secret: String!
     var clientID: String!
-    
+
     init(clientID: String, secret: String) {
         self.clientID = clientID
         self.secret = secret
 
-        
+
         path = "/api/v1/document/"
         bodyData = MockBodyData(document: MockInternalBody(name: "Test"))
     }
