@@ -1,9 +1,9 @@
 import Foundation
 
 public struct AccessTokenModel: Codable {
-    let accessToken: String
-    let expiresIn: Int
-    let tokenType, scope: String
+    public let accessToken: String
+    public let expiresIn: Int
+    public let tokenType, scope: String
 
     enum CodingKeys: String, CodingKey {
         case accessToken = "access_token"

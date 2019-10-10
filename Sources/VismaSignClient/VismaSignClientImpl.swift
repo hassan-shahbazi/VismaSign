@@ -1,7 +1,8 @@
 import Foundation
+import FoundationNetworking
 
 open class VismaSignClientImpl: VismaSignClient {
-    
+
     enum VismaSignClientError: Error {
         case badURL
 
@@ -14,7 +15,9 @@ open class VismaSignClientImpl: VismaSignClient {
 
     private let session = URLSession.shared
 
-    func performRequests<T: APIServiceRequest>(_ request: T, completion: @escaping (Result<T.ReturnType>) -> Void) throws {
+    public init() {}
+
+    public func performRequests<T: APIServiceRequest>(_ request: T, completion: @escaping (Result<T.ReturnType>) -> Void) throws {
         let urlRequest = try self.urlRequest(request)
         let task = session.dataTask(with: urlRequest) { [unowned self] responseData, response, responseError in
             if case let .failure(error) = self.validateResponseData(responseData, response: response, responseError: responseError) {
